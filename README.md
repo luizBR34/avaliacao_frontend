@@ -15,6 +15,7 @@ Para instalar e executar, sigas as etapas abaixo:
 
 4) abrir a pasta com o prompt de comando e baixar as dependencias usando o comando abaixo:
   npm install --save @angular/material@6.4.7 
+  
   npm install --save @angular/cdk@6.4.7 
   
 5) Rodar o projeto usando o comando: 
