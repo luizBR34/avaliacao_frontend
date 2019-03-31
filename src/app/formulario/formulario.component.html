@@ -1,0 +1,79 @@
+<div class="formDIV">
+
+  <p class="titulo">Formulario de Cadastro</p>
+
+  <form novalidate [formGroup]="form" (ngSubmit)="salvar()">
+
+    <div class="input-field">
+    <p>
+      <mat-form-field class="half-width">
+        <input matInput 
+                formControlName="nome"
+                type="text"
+                placeholder="Nome:"
+                required>
+        <mat-error *ngIf="form.get('nome').hasError(required) && form.get('nome').touched">O nome é obrigatório</mat-error>
+      </mat-form-field>
+    </p>
+  </div>
+
+  <div class="input-field">
+    <p>
+        <mat-form-field class="half-width">
+          <input matInput 
+                  formControlName="limite"
+                  type="text"
+                  placeholder="Limite:"
+                  required>
+          <mat-error *ngIf="form.get('limite').hasError(required) && form.get('limite').touched">O limite é obrigatório</mat-error>
+        </mat-form-field>
+      </p>
+    </div>
+
+    <div style="text-align: center; font-size: 1.3rem;">Risco:</div>
+    <div class="input-select">
+      <p>
+        <mat-select placeholder="Risco?" formControlName="risco">
+            <mat-option *ngFor="let ris of risco" [value]="ris" class="mat-option-text" (click)="onSelect(ris)">
+            {{ ris }}
+            </mat-option>
+        </mat-select>
+      </p>
+    </div>
+
+    <div class="input-field">
+      <button type="submit" mat-button class="fundo-primario cor-letra" [disabled]="form.invalid">Enviar</button>
+    </div>
+  </form>
+
+</div>
+
+
+<table class="tabelaForm">
+	<thead>
+	<tr>
+		<th>Nome</th>
+		<th>Limite</th>
+		<th>Taxa de Juros</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+  <tr *ngFor="let dads of dadosGRavados">
+		<td><span> {{dads.nome}} </span></td>
+		<td><span> {{dads.limite}} </span></td>
+    <td><span> {{dads.taxaJuros}} </span></td>
+	</tr>
+	</tbody>
+	
+</table>
+
+
+
+<div *ngIf="msgError">
+	<h2 style="color:red;">Error</h2>
+	<h4 style="color:red;">{{msgError}}</h4>
+</div>
+
+
+
